@@ -55,22 +55,36 @@ export const projects = {
   title: "Work",
   items: [
     {
+      name: "Space Forge",
+      tag: "Generative AI · 3D · Vastu",
+      body: "Turns a simple text prompt into a 3D house plan, designed with Vastu principles in mind.",
+      href: "https://space-forge.in/",
+      cta: "Visit live site",
+      featured: true,
+    },
+    {
       name: "WhatsApp AI Agent",
       tag: "Agentic AI · Lead generation",
       body: "An AI agent that works for your business at any hour. It chats with customers on WhatsApp and turns conversations into qualified leads.",
       href: "https://github.com/PavansaiVellanki",
+      cta: "View on GitHub",
+      featured: false,
     },
     {
       name: "Borewell Depth Predictor",
       tag: "Machine learning · Geology",
       body: "An ML model trained on a state's borewell data, with lithology layered on top. It weighs the type of rock under the soil, not just numbers, so depth predictions are more accurate.",
       href: "https://github.com/PavansaiVellanki",
+      cta: "View on GitHub",
+      featured: false,
     },
     {
       name: "Telephony Voice Agent",
       tag: "Voice AI · Telephony",
       body: "A voice agent that answers phone calls and holds natural conversations.",
       href: "https://github.com/PavansaiVellanki",
+      cta: "View on GitHub",
+      featured: false,
     },
   ],
 };

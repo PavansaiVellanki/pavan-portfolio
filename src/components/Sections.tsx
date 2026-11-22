@@ -61,18 +61,22 @@ export function Sections() {
       <Section id="work" title={projects.title}>
         <ul className="grid gap-px border border-ink/20 bg-ink/20 md:grid-cols-3">
           {projects.items.map((p, i) => (
-            <li key={p.name} className="flex flex-col bg-page p-6">
+            <li key={p.name} className={`flex flex-col bg-page p-6 ${p.featured ? 'md:col-span-3 md:p-10' : ''}`}>
               <span className="text-ui opacity-60">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="pixel mt-6 text-[clamp(18px,1.7vw,24px)] leading-tight">{p.name}</h3>
+              <h3
+                className={`pixel mt-6 leading-tight ${p.featured ? 'text-[clamp(24px,3vw,40px)]' : 'text-[clamp(18px,1.7vw,24px)]'}`}
+              >
+                {p.name}
+              </h3>
               <p className="mt-2 text-ui opacity-60">{p.tag}</p>
-              <p className="mt-5 text-lede">{p.body}</p>
+              <p className={`mt-5 text-lede ${p.featured ? 'max-w-[52ch]' : ''}`}>{p.body}</p>
               <a
                 href={p.href}
                 target="_blank"
                 rel="noreferrer"
                 className="group mt-auto inline-flex items-center gap-2 pt-8 text-ui underline-offset-4 hover:underline"
               >
-                View on GitHub {arrow}
+                {p.cta} {arrow}
               </a>
             </li>
           ))}
