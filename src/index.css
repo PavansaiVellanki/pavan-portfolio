@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+/* Paper-grey page, near-black ink. Silkscreen bold for the pixel headline, Geist Mono for everything else. */
+:root {
+  --page: #f0f1ee;
+  --ink: #0b0b0b;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-ink: var(--ink);
+}
+
+@theme {
+  --font-pixel: 'Silkscreen', ui-monospace, monospace;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-hero: clamp(44px, 7.6vw, 128px);
+  --text-hero--line-height: 0.92;
+  --text-hero--letter-spacing: -0.02em;
+  --text-lede: clamp(14px, 1.22vw, 18px);
+  --text-lede--line-height: 1.42;
+  --text-lede--letter-spacing: -0.01em;
+  --text-ui: clamp(12px, 0.95vw, 14px);
+  --text-ui--line-height: 1;
+  --text-ui--letter-spacing: -0.01em;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+html {
+  background: var(--page);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-mono);
+  background: var(--page);
+}
+
+/* The headline's pixel font must never be smoothed into grey edges. */
+.pixel {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  text-transform: uppercase;
+}
+
+/* The video meets the page softly on the side that faces the copy. */
+.edge-fade {
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 12%),
+    linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 12%),
+    linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+@media (max-width: 767px) {
+  .edge-fade {
+    mask-image:
+      linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%),
+      linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%),
+      linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  }
+}
+
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
